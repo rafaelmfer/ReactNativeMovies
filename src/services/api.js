@@ -25,9 +25,9 @@ export const fetchTVShows = async (endpoint) => {
     return data.results;
 };
 
-export const fetchTVDetails = async (movieId) => {
+export const fetchTVDetails = async (tvShowId) => {
     const response = await fetch(
-        `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
+        `${BASE_URL}/tv/${tvShowId}?api_key=${API_KEY}`
     );
     const data = await response.json();
     return data;

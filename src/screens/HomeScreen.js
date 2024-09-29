@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import { useMovieViewModel } from "../viewmodels/MovieViewModel";
 import FlickerInfoCard from "../components/FlickerInfoCard";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
     const { movies, loading, error } = useMovieViewModel();
+    const navigation = useNavigation();
 
     if (loading) {
         return (
@@ -34,9 +36,9 @@ const HomeScreen = () => {
                 <FlickerInfoCard
                     key={movie.id}
                     item={movie}
-                    onDetails={() => {
-                        /* ShowPage */
-                    }}
+                    onDetails={() =>
+                        navigation.navigate("ShowPage", { filmId: movie.id, mediaType: "movie" })
+                    }
                 />
             ))}
         </ScrollView>

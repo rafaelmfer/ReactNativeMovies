@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import { useTVShowsViewModel } from "../viewmodels/TVShowsViewModel";
 import FlickerInfoCard from "../components/FlickerInfoCard";
+import { useNavigation } from "@react-navigation/native";
 
 const TVShowsScreen = () => {
     const { tvShows, isLoading, error } = useTVShowsViewModel();
+    const navigation = useNavigation();
 
     if (isLoading) {
         return (
@@ -37,7 +39,10 @@ const TVShowsScreen = () => {
                     key={item.id}
                     item={item}
                     onDetails={() => {
-                        /* ShowPage */
+                        navigation.navigate("ShowPage", {
+                            filmId: item.id,
+                            mediaType: "tv",
+                        });
                     }}
                 />
             )}
