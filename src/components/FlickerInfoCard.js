@@ -36,11 +36,11 @@ const FlickerInfoCard = ({ item, onDetails }) => {
 const styles = StyleSheet.create({
     card: {
         flexDirection: "row",
-        padding: 10,
+        padding: 4,
         borderRadius: 10,
         backgroundColor: "#fff",
         elevation: 3,
-        margin: 10,
+        margin: 8,
     },
     poster: {
         width: 100,

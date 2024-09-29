@@ -5,11 +5,13 @@ export const useMovieViewModel = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [category, setCategory] = useState("popular");
 
     useEffect(() => {
         const loadMovies = async () => {
+            setLoading(true);
             try {
-                const data = await fetchMovies("popular");
+                const data = await fetchMovies(category);
                 setMovies(data);
             } catch (error) {
                 console.error(error);
@@ -20,7 +22,7 @@ export const useMovieViewModel = () => {
         };
 
         loadMovies();
-    }, []);
+    }, [category]);
 
-    return { movies, loading, error };
+    return { movies, loading, error, setCategory };
 };

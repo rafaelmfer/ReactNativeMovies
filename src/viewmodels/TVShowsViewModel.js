@@ -5,11 +5,13 @@ export const useTVShowsViewModel = () => {
     const [tvShows, setTvShows] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [category, setCategory] = useState("popular");
 
     useEffect(() => {
         const loadTvShows = async () => {
+            setLoading(true);
             try {
-                const data = await fetchTVShows("popular");
+                const data = await fetchTVShows(category);
                 setTvShows(data);
             } catch (error) {
                 console.error(error);
@@ -20,7 +22,7 @@ export const useTVShowsViewModel = () => {
         };
 
         loadTvShows();
-    }, []);
+    }, [category]);
 
-    return { tvShows, loading };
+    return { tvShows, loading, error, setCategory};
 };

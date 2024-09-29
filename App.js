@@ -24,6 +24,7 @@ function MainTabs() {
                     tabBarLabelStyle: {
                         fontSize: 14,
                         fontWeight: "bold",
+                        textTransform: "capitalize",
                     },
                     tabBarStyle: {
                         backgroundColor: "#fff",

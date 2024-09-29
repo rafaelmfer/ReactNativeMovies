@@ -1,18 +1,37 @@
-import React from "react";
-import {
-    View,
-    Text,
-    ActivityIndicator,
-    ScrollView,
-    StyleSheet,
-} from "react-native";
+import React, { useState } from "react";
+import { View, ActivityIndicator, ScrollView, StyleSheet } from "react-native";
 import { useMovieViewModel } from "../viewmodels/MovieViewModel";
 import FlickerInfoCard from "../components/FlickerInfoCard";
 import { useNavigation } from "@react-navigation/native";
+import DropdownButton from "../components/DropdownButton";
+import CustomBottomSheet from "../components/CustomBottomSheet";
+
+const categories = [
+    { label: "Now Playing", value: "now_playing" },
+    { label: "Popular", value: "popular" },
+    { label: "Top Rated", value: "top_rated" },
+    { label: "Upcoming", value: "upcoming" },
+];
 
 const HomeScreen = () => {
-    const { movies, loading, error } = useMovieViewModel();
+    const { movies, loading, error, setCategory } = useMovieViewModel();
+    const [selectedCategory, setSelectedCategory] = useState("Popular");
+    const [modalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
+
+    const openModal = () => {
+        setModalVisible(true);
+    };
+
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category.label);
+        setCategory(category.value);
+        closeModal();
+    };
 
     if (loading) {
         return (
@@ -31,17 +50,30 @@ const HomeScreen = () => {
     }
 
     return (
-        <ScrollView style={styles.container}>
-            {movies.map((movie) => (
-                <FlickerInfoCard
-                    key={movie.id}
-                    item={movie}
-                    onDetails={() =>
-                        navigation.navigate("ShowPage", { filmId: movie.id, mediaType: "movie" })
-                    }
-                />
-            ))}
-        </ScrollView>
+        <View style={styles.container}>
+            <DropdownButton label={selectedCategory} onPress={openModal} />
+            <CustomBottomSheet
+                visible={modalVisible}
+                onClose={closeModal}
+                options={categories}
+                selectedValue={selectedCategory}
+                onSelect={handleCategorySelect}
+            />
+            <ScrollView>
+                {movies.map((movie) => (
+                    <FlickerInfoCard
+                        key={movie.id}
+                        item={movie}
+                        onDetails={() =>
+                            navigation.navigate("ShowPage", {
+                                filmId: movie.id,
+                                mediaType: "movie",
+                            })
+                        }
+                    />
+                ))}
+            </ScrollView>
+        </View>
     );
 };
 
@@ -50,11 +82,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 16,
         backgroundColor: "#fff",
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 16,
     },
     loaderContainer: {
         flex: 1,
