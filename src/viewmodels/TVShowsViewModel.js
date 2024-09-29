@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { fetchMovies } from "../services/api";
+import { fetchTVShows } from "../services/api";
 
-export const useMovieViewModel = () => {
-    const [movies, setMovies] = useState([]);
+export const useTVShowsViewModel = () => {
+    const [tvShows, setTvShows] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const loadMovies = async () => {
+        const loadTvShows = async () => {
             try {
-                const data = await fetchMovies("popular");
-                setMovies(data);
+                const data = await fetchTVShows("popular");
+                setTvShows(data);
             } catch (error) {
                 console.error(error);
                 setError(error);
@@ -19,8 +19,8 @@ export const useMovieViewModel = () => {
             }
         };
 
-        loadMovies();
+        loadTvShows();
     }, []);
 
-    return { movies, loading, error };
+    return { tvShows, loading };
 };
