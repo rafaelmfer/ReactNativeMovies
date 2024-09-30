@@ -20,7 +20,7 @@ function MainTabs() {
             <Tab.Navigator
                 initialRouteName="Movies"
                 screenOptions={{
-                    tabBarActiveTintColor: "#37474f",
+                    tabBarActiveTintColor: "#2f3d4f",
                     tabBarInactiveTintColor: "#888",
                     tabBarLabelStyle: {
                         fontSize: 14,
@@ -33,7 +33,7 @@ function MainTabs() {
                         borderBottomColor: "#ccc",
                     },
                     tabBarIndicatorStyle: {
-                        backgroundColor: "#37474f",
+                        backgroundColor: "#2f3d4f",
                         height: 3,
                     },
                     tabBarItemStyle: {

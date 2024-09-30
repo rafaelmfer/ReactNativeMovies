@@ -6,6 +6,7 @@ import {
     StyleSheet,
     ScrollView,
     Image,
+    StatusBar,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { useShowPageViewModel } from "../viewmodels/ShowPageViewModel";
@@ -46,6 +47,7 @@ const ShowPageScreen = () => {
 
     return (
         <ScrollView style={styles.container}>
+            <StatusBar barStyle="dark-content" />
             <Text style={styles.title}>
                 {filmDetails.title || filmDetails.name}
             </Text>

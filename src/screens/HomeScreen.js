@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, ActivityIndicator, ScrollView, StyleSheet } from "react-native";
+
+import {
+    View,
+    ActivityIndicator,
+    ScrollView,
+    StyleSheet,
+    StatusBar,
+} from "react-native";
 import { useMovieViewModel } from "../viewmodels/MovieViewModel";
 import FlickerInfoCard from "../components/FlickerInfoCard";
 import { useNavigation } from "@react-navigation/native";
@@ -51,6 +58,7 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
+            <StatusBar barStyle="light-content" />
             <View style={styles.smallDropdown}>
                 <DropdownButton label={selectedCategory} onPress={openModal} />
             </View>
@@ -81,7 +89,7 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
     smallDropdown: {
-        alignSelf:"center",
+        alignSelf: "center",
         marginTop: 16,
         marginBottom: 8,
     },
