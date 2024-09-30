@@ -51,7 +51,9 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <DropdownButton label={selectedCategory} onPress={openModal} />
+            <View style={styles.smallDropdown}>
+                <DropdownButton label={selectedCategory} onPress={openModal} />
+            </View>
             <CustomBottomSheet
                 visible={modalVisible}
                 onClose={closeModal}
@@ -78,6 +80,11 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    smallDropdown: {
+        alignSelf:"center",
+        marginTop: 16,
+        marginBottom: 8,
+    },
     container: {
         flex: 1,
         paddingHorizontal: 16,

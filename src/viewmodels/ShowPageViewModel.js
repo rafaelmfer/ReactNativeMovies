@@ -10,8 +10,9 @@ export const useShowPageViewModel = (filmId, mediaType) => {
         const fetchDetails = async () => {
             try {
                 setLoading(true);
+                setError(null);
                 let details;
-                if (mediaType == "movie") {
+                if (mediaType === "movie") {
                     details = await fetchMovieDetails(filmId);
                 } else {
                     details = await fetchTVDetails(filmId);

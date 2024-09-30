@@ -32,3 +32,11 @@ export const fetchTVDetails = async (tvShowId) => {
     const data = await response.json();
     return data;
 };
+
+export const searchMovieOrTV = async (endpoint, query) => {
+    const response = await fetch(
+        `${BASE_URL}/search/${endpoint}?api_key=${API_KEY}&query=${query}`
+    );
+    const data = await response.json();
+    return data.results;
+};

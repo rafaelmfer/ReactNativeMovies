@@ -46,20 +46,26 @@ const ShowPageScreen = () => {
 
     return (
         <ScrollView style={styles.container}>
+            <Text style={styles.title}>
+                {filmDetails.title || filmDetails.name}
+            </Text>
             <Image
                 source={{
                     uri: `https://image.tmdb.org/t/p/w500/${filmDetails.poster_path}`,
                 }}
                 style={styles.poster}
             />
-            <Text style={styles.title}>
-                {filmDetails.title || filmDetails.name}
-            </Text>
             <Text style={styles.overview}>{filmDetails.overview}</Text>
-            <Text style={styles.releaseDate}>
-                Release Date:{" "}
-                {filmDetails.release_date || filmDetails.first_air_date}
-            </Text>
+            <View style={{ flexDirection: "row" }}>
+                <Text style={styles.releaseDate}>
+                    Popularity: {filmDetails.popularity}
+                    {" | "}
+                </Text>
+                <Text style={styles.releaseDate}>
+                    Release Date:{" "}
+                    {filmDetails.release_date || filmDetails.first_air_date}
+                </Text>
+            </View>
         </ScrollView>
     );
 };
@@ -67,8 +73,8 @@ const ShowPageScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 16,
-        backgroundColor: "#fff",
+        paddingHorizontal: 32,
+        marginBottom: 32,
     },
     poster: {
         width: "100%",
@@ -77,9 +83,12 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     title: {
+        alignSelf: "center",
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 10,
+
+        marginTop: 32,
+        marginBottom: 24,
     },
     overview: {
         fontSize: 16,
@@ -87,7 +96,9 @@ const styles = StyleSheet.create({
         lineHeight: 24,
     },
     releaseDate: {
+        marginTop: 16,
         fontSize: 14,
+        fontWeight: "bold",
         color: "gray",
     },
     loaderContainer: {

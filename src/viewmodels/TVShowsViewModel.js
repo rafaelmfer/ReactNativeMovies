@@ -10,6 +10,7 @@ export const useTVShowsViewModel = () => {
     useEffect(() => {
         const loadTvShows = async () => {
             setLoading(true);
+            setError(null);
             try {
                 const data = await fetchTVShows(category);
                 setTvShows(data);

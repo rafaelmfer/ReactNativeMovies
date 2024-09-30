@@ -6,6 +6,7 @@ import { View } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import Header from "./src/components/Header";
 import HomeScreen from "./src/screens/HomeScreen";
+import SearchScreen from "./src/screens/SearchScreen";
 import TVShowsScreen from "./src/screens/TVShowsScreen";
 import ShowPageScreen from "./src/screens/ShowPageScreen";
 
@@ -32,7 +33,7 @@ function MainTabs() {
                         borderBottomColor: "#ccc",
                     },
                     tabBarIndicatorStyle: {
-                        backgroundColor: "#fff",
+                        backgroundColor: "#37474f",
                         height: 3,
                     },
                     tabBarItemStyle: {
@@ -42,6 +43,7 @@ function MainTabs() {
                 }}
             >
                 <Tab.Screen name="Movies" component={HomeScreen} />
+                <Tab.Screen name="Search Results" component={SearchScreen} />
                 <Tab.Screen name="TV Shows" component={TVShowsScreen} />
             </Tab.Navigator>
         </View>

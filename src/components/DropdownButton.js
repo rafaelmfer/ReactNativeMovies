@@ -13,16 +13,13 @@ const DropdownButton = ({ label, onPress }) => {
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 16,
-        marginBottom: 16,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         padding: 4,
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
-        alignSelf: 'center', // Centralizar horizontalmente
     },
     buttonText: {
         fontSize: 16,

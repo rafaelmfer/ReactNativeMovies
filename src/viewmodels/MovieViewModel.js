@@ -10,6 +10,7 @@ export const useMovieViewModel = () => {
     useEffect(() => {
         const loadMovies = async () => {
             setLoading(true);
+            setError(null);
             try {
                 const data = await fetchMovies(category);
                 setMovies(data);
