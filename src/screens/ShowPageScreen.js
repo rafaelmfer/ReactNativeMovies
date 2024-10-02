@@ -46,7 +46,7 @@ const ShowPageScreen = () => {
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <StatusBar barStyle="dark-content" />
             <Text style={styles.title}>
                 {filmDetails.title || filmDetails.name}
